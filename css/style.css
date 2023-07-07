@@ -35,6 +35,9 @@ body {
   border: 2px solid #1a191f;
   border-radius: 15px;
   outline: none;
+	font-size: 16px;
+	font-family: "Alumni Sans", sans-serif;
+	letter-spacing: 0.5px;
 }
 
 .movies {
