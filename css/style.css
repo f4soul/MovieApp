@@ -1,0 +1,194 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a191f;
+  font-family: "Alumni Sans", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  height: 60px;
+}
+
+.header_logo {
+  font-size: 40px;
+  text-decoration-color: #f50;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.header_search {
+  padding: 8px;
+  border: 2px solid #1a191f;
+  border-radius: 15px;
+  outline: none;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.movie {
+  width: 240px;
+  margin: 10px;
+  position: relative;
+}
+
+.movie_cover-inner {
+  position: relative;
+  height: 360px;
+}
+
+.movie_cover {
+  max-width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.movie_cover-hover {
+  background-color: #000000;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 15px;
+}
+
+.movie_cover-hover:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.movie_info {
+  padding: 10px 0px;
+}
+
+.movie_title {
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.movie_category {
+  font-size: 16px;
+  color: gold;
+}
+
+.movie_average {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a191f;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.movie_average-green {
+  border: 1px solid green;
+}
+
+.movie_average-orange {
+  border: 1px solid orange;
+}
+
+.movie_average-red {
+  border: 1px solid red;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: width 2s;
+}
+
+.modal-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_card {
+  background-color: #ffffff;
+  max-width: 600px;
+  padding: 16px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px 0 #af94947c;
+  background-color: #1a191f;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_movie-backdrop {
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.modal_movie-info {
+  margin-left: 20px;
+}
+
+.modal_button-close {
+  padding: 5px;
+  margin: 10px;
+  width: 100px;
+  align-self: center;
+  cursor: pointer;
+  border: #1a191f;
+  border-radius: 15px;
+  font-family: "Alumni Sans", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #f50 69.93%, #d6bb00);
+  color: #ffffff;
+}
+
+.modal_button-close:hover {
+  background: linear-gradient(135deg, #ff55009f 69.93%, #d6bb00);
+  cursor: pointer;
+}
+
+.modal_movie-site {
+  color: #ffd80e;
+}
+
+ul li {
+  padding: 5px;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
