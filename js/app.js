@@ -27,7 +27,7 @@ async function getMovies(url) {
   showMovies(respData);
 }
 
-/* Создаем функцию для окрашивания поля с оценкой фильма согласно полученному значению */
+/* Создаем функцию для окрашивания рамки поля с оценкой фильма согласно полученному значению */
 function getClassByRate(vote) {
   if (vote >= 7) {
     return "green";
@@ -50,33 +50,39 @@ function showMovies(data) {
     const movieElem = document.createElement("div");
     movieElem.classList.add("movie");
     movieElem.innerHTML = `
-		<div class="movie">
-		<div class="movie_cover-inner">
-			<img
-				src="${movie.posterUrlPreview}"
-				alt="${movie.nameRu}"
-				class="movie_cover"
-			/>
-			<div class="movie_cover-hover"></div>
-		</div>
-		<div class="movie_info">
-			<div class="movie_title">${movie.nameRu}</div>
-			<div class="movie_category">${movie.genres.map(
-        (genre) => ` ${genre.genre}`
-      )}</div>
-			${
-        movie.rating &&
-        `
-				<div class="movie_average movie_average-${getClassByRate(movie.rating)}">${
-          movie.rating
-        }</div>
-				`
-      }
-	</div>
-	`;
+      <div class="movie">
+        <div class="movie_cover-inner">
+          <img
+            src="${movie.posterUrlPreview}"
+            alt="${movie.nameRu}"
+            class="movie_cover"
+          />
+          <div class="movie_cover-hover"></div>
+        </div>
+        <div class="movie_info">
+          <div class="movie_title">${movie.nameRu}</div>
+          <div class="movie_category">${movie.genres.map(
+            (genre) => ` ${genre.genre}`
+          )}</div>
+          ${
+            movie.rating && !isPercentage(movie.rating)
+              ? `
+            <div class="movie_average movie_average-${getClassByRate(
+              movie.rating
+            )}">${movie.rating}</div>
+          `
+              : ""
+          }
+        </div>
+      </div>`;
     movieElem.addEventListener("click", () => openModal(movie.filmId));
     moviesElem.appendChild(movieElem);
   });
+}
+
+/* Функция для проверки входного значения поля "рейтинг" (если возвращается пустое значение, либо значение с %, то рейтинг не выводится в карточку ) */
+function isPercentage(value) {
+  return typeof value === "string" && value.endsWith("%");
 }
 
 /* Подключаем форму поиска и инпут */
