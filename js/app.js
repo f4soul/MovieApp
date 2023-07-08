@@ -47,36 +47,43 @@ function showMovies(data) {
 
   /* Создаем карточки фильмов на странице */
   data.films.forEach((movie) => {
-    const movieElem = document.createElement("div");
-    movieElem.classList.add("movie");
-    movieElem.innerHTML = `
-      <div class="movie">
-        <div class="movie_cover-inner">
-          <img
-            src="${movie.posterUrlPreview}"
-            alt="${movie.nameRu}"
-            class="movie_cover"
-          />
-          <div class="movie_cover-hover"></div>
-        </div>
-        <div class="movie_info">
-          <div class="movie_title">${movie.nameRu}</div>
-          <div class="movie_category">${movie.genres.map(
-            (genre) => ` ${genre.genre}`
-          )}</div>
-          ${
-            movie.rating && !isPercentage(movie.rating)
-              ? `
-            <div class="movie_average movie_average-${getClassByRate(
-              movie.rating
-            )}">${movie.rating}</div>
-          `
-              : ""
-          }
-        </div>
-      </div>`;
-    movieElem.addEventListener("click", () => openModal(movie.filmId));
-    moviesElem.appendChild(movieElem);
+    /* Проверяем условия для рейтинга и названия фильма и убираем из поисковой выдачи фильмы, где отсутствует рейтинг или название фильма */
+    if (
+      movie.rating !== null &&
+      movie.nameRu !== undefined &&
+      movie.rating !== "null"
+    ) {
+      const movieElem = document.createElement("div");
+      movieElem.classList.add("movie");
+      movieElem.innerHTML = `
+        <div class="movie">
+          <div class="movie_cover-inner">
+            <img
+              src="${movie.posterUrlPreview}"
+              alt="${movie.nameRu}"
+              class="movie_cover"
+            />
+            <div class="movie_cover-hover"></div>
+          </div>
+          <div class="movie_info">
+            <div class="movie_title">${movie.nameRu}</div>
+            <div class="movie_category">${movie.genres.map(
+              (genre) => ` ${genre.genre}`
+            )}</div>
+            ${
+              !isPercentage(movie.rating) && movie.rating !== null
+                ? `
+              <div class="movie_average movie_average-${getClassByRate(
+                movie.rating
+              )}">${movie.rating}</div>
+            `
+                : ""
+            }
+          </div>
+        </div>`;
+      movieElem.addEventListener("click", () => openModal(movie.filmId));
+      moviesElem.appendChild(movieElem);
+    }
   });
 }
 
@@ -85,7 +92,7 @@ function isPercentage(value) {
   return typeof value === "string" && value.endsWith("%");
 }
 
-/* Подключаем форму поиска и инпут */
+/* Подключаем форму поиска */
 const form = document.querySelector("form");
 const search = document.querySelector(".header_search");
 
@@ -153,7 +160,7 @@ function closeModal() {
   modalElem.classList.remove("modal-show");
   document.body.classList.remove("stop-scrolling");
 }
-/* Глобальный обработчик для всего окна для закрытия модального окна по клику в любой области*/
+/* Глобальный обработчик для всей страницы, для закрытия модального окна по клику в любой области*/
 window.addEventListener("click", (e) => {
   if (e.target === modalElem) {
     closeModal();
