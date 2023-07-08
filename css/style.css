@@ -1,9 +1,11 @@
+/* Сброс стилей */
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* Основные стили */
 body {
   background-color: #1a191f;
   font-family: "Alumni Sans", sans-serif;
@@ -15,6 +17,7 @@ body {
   margin: 0 auto;
 }
 
+/* Шапка */
 .header_content {
   display: flex;
   align-items: center;
@@ -35,11 +38,12 @@ body {
   border: 2px solid #1a191f;
   border-radius: 15px;
   outline: none;
-	font-size: 16px;
-	font-family: "Alumni Sans", sans-serif;
-	letter-spacing: 0.5px;
+  font-size: 16px;
+  font-family: "Alumni Sans", sans-serif;
+  letter-spacing: 0.5px;
 }
 
+/* Карточки фильмов */
 .movies {
   display: flex;
   flex-wrap: wrap;
@@ -122,6 +126,7 @@ body {
   border: 1px solid red;
 }
 
+/* Модальное окно */
 .modal {
   display: none;
   position: fixed;
@@ -131,8 +136,9 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #00000080;
   transition: width 2s;
+	overflow: hidden;
 }
 
 .modal-show {
@@ -142,40 +148,55 @@ body {
 }
 
 .modal_card {
-  background-color: #ffffff;
-  max-width: 600px;
-  padding: 16px;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  background-color: #1a191f;
+  max-width: 800px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 20px 0 #af94947c;
-  background-color: #1a191f;
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
 }
 
 .modal_movie-backdrop {
-  width: 300px;
-  margin: 0 auto;
+  width: 100%;
   border-radius: 15px;
 }
 
 .modal_movie-info {
+  padding: 20px 0;
+}
+
+.modal_movie-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal_movie-info li {
+  padding: 5px 0;
   margin-left: 20px;
 }
 
+.modal_movie-poster {
+	flex: 0 0 300px;
+  margin-right: 0;
+  margin-bottom: 20px;
+}
+
 .modal_button-close {
-  padding: 5px;
-  margin: 10px;
-  width: 100px;
-  align-self: center;
+  align-self: flex-start;
+  padding: 10px 20px;
+	margin: 15px 0;
   cursor: pointer;
-  border: #1a191f;
+  border: none;
   border-radius: 15px;
-  font-family: "Alumni Sans", sans-serif;
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #f50 69.93%, #d6bb00);
+  background-color: #ff5500;
   color: #ffffff;
+  font-size: 16px;
+  font-family: "Alumni Sans", sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .modal_button-close:hover {
@@ -187,11 +208,15 @@ body {
   color: #ffd80e;
 }
 
-ul li {
-  padding: 5px;
-}
-
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
+}
+
+.modal_movie-title {
+  font-size: 32px;
+}
+
+.modal_movie-release-year {
+  font-size: 24px;
 }
