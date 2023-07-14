@@ -1,222 +1,278 @@
 /* Сброс стилей */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #f50;
+		border-radius: 16px;
+	}
+
+	::-webkit-scrollbar-track {
+		-webkit-box-shadow: inset 0 0 6px #1a191f;
+		background-color: #1a191f;
+	}
 }
 
 /* Основные стили */
 body {
-  background-color: #1a191f;
-  font-family: "Alumni Sans", sans-serif;
-  letter-spacing: 0.5px;
+	background-color: #1a191f;
+	font-family: "Alumni Sans", sans-serif;
+	letter-spacing: 0.5px;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+	max-width: 1200px;
+	margin: 0 auto;
 }
+
 
 /* Шапка */
 .header_content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px;
-  height: 60px;
+	display: flex;
+	padding: 16px;
+	align-items: center;
+	justify-content: space-between;
+	height: 60px;
 }
 
 .header_logo {
-  font-size: 40px;
-  text-decoration-color: #f50;
-  color: #ffffff;
-  letter-spacing: 0.5px;
+	font-size: 54px;
+	text-decoration-color: #f50;
+	color: #ffffff;
+	letter-spacing: 0.5px;
+	/* animation: breath 2s ease-in-out infinite; */
+}
+
+@keyframes breath {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.05);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 
 .header_search {
-  padding: 8px;
-  border: 2px solid #1a191f;
-  border-radius: 15px;
-  outline: none;
-  font-size: 16px;
-  font-family: "Alumni Sans", sans-serif;
-  letter-spacing: 0.5px;
+	padding: 8px;
+	border: 2px solid #f50;
+	border-radius: 15px;
+	outline: none;
+	font-size: 16px;
+	font-family: "Alumni Sans", sans-serif;
+	letter-spacing: 0.5px;
+	transition: transform 0.3s;
+	background-color: #ffffff;
 }
+
+.header_search:hover {
+	transform: scale(1.1);
+	background-color: #ffffff;
+}
+
 
 /* Карточки фильмов */
 .movies {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin-left: -20px;
 }
 
 .movie {
-  width: 240px;
-  margin: 10px;
-  position: relative;
+	width: 240px;
+	margin: 10px;
+	position: relative;
+	transition: transform 0.3s;
+}
+
+.movie:hover {
+	transform: scale(1.02);
 }
 
 .movie_cover-inner {
-  position: relative;
-  height: 360px;
+	position: relative;
+	height: 360px;
 }
 
 .movie_cover {
-  max-width: 100%;
-  height: 100%;
-  border-radius: 15px;
+	max-width: 100%;
+	height: 100%;
+	border-radius: 15px;
 }
 
 .movie_cover-hover {
-  background-color: #000000;
-  opacity: 0.1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  height: 100%;
-  z-index: 1;
-  border-radius: 15px;
+	background-color: #000000;
+	opacity: 0.1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	max-width: 100%;
+	height: 100%;
+	z-index: 1;
+	border-radius: 15px;
 }
 
 .movie_cover-hover:hover {
-  background-color: gray;
-  cursor: pointer;
+	background-color: gray;
+	cursor: pointer;
 }
 
 .movie_info {
-  padding: 10px 0px;
+	padding: 10px 0px;
 }
 
 .movie_title {
-  font-size: 20px;
-  color: rgb(255, 255, 255);
+	font-size: 20px;
+	color: rgb(255, 255, 255);
 }
 
 .movie_category {
-  font-size: 16px;
-  color: gold;
+	font-size: 16px;
+	color: gold;
 }
 
 .movie_average {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1a191f;
-  color: #ffffff;
-  font-size: 14px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	border-radius: 50%;
+	width: 36px;
+	height: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1a191f;
+	color: #ffffff;
+	font-size: 14px;
 }
 
 .movie_average-green {
-  border: 1px solid green;
+	border: 1px solid green;
 }
 
 .movie_average-orange {
-  border: 1px solid orange;
+	border: 1px solid orange;
 }
 
 .movie_average-red {
-  border: 1px solid red;
+	border: 1px solid red;
 }
 
 /* Модальное окно */
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: #00000080;
-  transition: width 2s;
+	display: none;
+	position: fixed;
+	z-index: 100;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: #00000080;
 	overflow: hidden;
+	animation: fade-in 0.4s;
 }
 
 .modal-show {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+	opacity: 1;
 }
 
 .modal_card {
-  display: flex;
-  align-items: stretch;
-  position: relative;
-  background-color: #1a191f;
-  max-width: 800px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px 0 #af94947c;
-  color: #ffffff;
+	display: flex;
+	align-items: stretch;
+	position: relative;
+	background-color: #1a191f;
+	max-width: 800px;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 0 20px 0 #af94947c;
+	color: #ffffff;
 }
 
 .modal_movie-backdrop {
-  width: 100%;
-  border-radius: 15px;
+	width: 100%;
+	border-radius: 15px;
 }
 
 .modal_movie-info {
-  padding: 20px 0;
+	padding: 20px 0;
 }
 
 .modal_movie-info ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .modal_movie-info li {
-  padding: 5px 0;
-  margin-left: 20px;
+	padding: 5px 0;
+	margin-left: 20px;
 }
 
 .modal_movie-poster {
 	flex: 0 0 300px;
-  margin-right: 0;
-  margin-bottom: 20px;
+	margin-right: 0;
+	margin-bottom: 20px;
 }
 
 .modal_button-close {
-  align-self: flex-start;
-  padding: 10px 20px;
+	align-self: flex-start;
+	padding: 10px 20px;
 	margin: 15px 0;
-  cursor: pointer;
-  border: none;
-  border-radius: 15px;
-  background-color: #ff5500;
-  color: #ffffff;
-  font-size: 16px;
-  font-family: "Alumni Sans", sans-serif;
-  letter-spacing: 0.5px;
+	cursor: pointer;
+	border: none;
+	border-radius: 15px;
+	background-color: #ff5500;
+	color: #ffffff;
+	font-size: 16px;
+	font-family: "Alumni Sans", sans-serif;
+	letter-spacing: 0.5px;
 }
 
 .modal_button-close:hover {
-  background: linear-gradient(135deg, #ff55009f 69.93%, #d6bb00);
-  cursor: pointer;
+	background: linear-gradient(135deg, #ff55009f 69.93%, #d6bb00);
+	cursor: pointer;
 }
 
 .modal_movie-site {
-  color: #ffd80e;
+	color: #ffd80e;
 }
 
 .stop-scrolling {
-  height: 100%;
-  overflow: hidden;
+	height: 100%;
+	overflow: hidden;
 }
 
 .modal_movie-title {
-  font-size: 32px;
+	font-size: 32px;
 }
 
 .modal_movie-release-year {
-  font-size: 24px;
+	font-size: 24px;
 }
