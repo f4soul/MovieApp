@@ -85,7 +85,7 @@ function showMovies(data) {
 		}
 	});
 
-	
+
 }
 
 /* Функция для проверки входного значения поля "рейтинг" (если возвращается пустое значение, либо значение с %, то рейтинг не выводится в карточку ) */
@@ -129,34 +129,45 @@ async function openModal(id) {
 	/* Убираем возможность скролла страницы при открытом модальном окне */
 	document.body.classList.add("stop-scrolling");
 
-	modalElem.innerHTML = `<div class="modal_card">
-  <div class="modal_movie-content">
-    <h2>
-      <span class="modal_movie-title">${respData.nameRu}</span>
-      <span class="modal_movie-release-year"> - ${respData.year}</span>
-    </h2>
-    <ul class="modal_movie-info">
-      <div class="loader"></div>
-      <li class="modal_movie-genre">Жанр - ${respData.genres.map(
-		(el) => `<span>${el.genre}</span>`
-	)}</li>
-      ${respData.filmLength
-			? `<li class="modal_movie-runtime">Время - ${respData.filmLength} минут</li>`
-			: ""
-		} ${respData.ratingKinopoisk !== null ? `
-			<li>КиноПоиск: ${respData.ratingKinopoisk}</li>` : ""}
-			${respData.ratingImdb !== null ? `
-				<li>IMDb: ${respData.ratingImdb}</li>` : ""}
-      <li>Сайт: <a class="modal_movie-site" href="${respData.webUrl}">${respData.webUrl
-		}</a></li>${respData.description !== null ? `
-      <li class="modal_movie-overview">Описание - ${respData.description}</li>` : ""}
-        <button type="button" class="modal_button-close">Закрыть</button>
-    </ul>
-  </div>
-  <div class="modal_movie-poster">
-    <img class="modal_movie-backdrop" src="${respData.posterUrl}" alt="">
-  </div>
-</div>
+	modalElem.innerHTML = ` <div class="modal_card">
+      <div class="modal_button-close">
+        <i class="fa-regular fa-circle-xmark" style="color: #ff5500"></i>
+      </div>
+      <div class="modal_movie-content">
+        <h2>
+          <span class="modal_movie-title">${respData.nameRu}</span>
+          <span class="modal_movie-release-year"> - ${respData.year}</span>
+        </h2>
+        <ul class="modal_movie-info">
+          <li class="modal_movie-genre">
+            Жанр - ${respData.genres.map((el) => `<span>${el.genre}</span>`)}
+          </li>
+          ${respData.filmLength ? `
+          <li class="modal_movie-runtime">
+            Время - ${respData.filmLength} минут
+          </li>
+          ` : ""} ${respData.ratingKinopoisk !== null ? `
+          <li>КиноПоиск: ${respData.ratingKinopoisk}</li>
+          ` : ""} ${respData.ratingImdb !== null ? `
+          <li>IMDb: ${respData.ratingImdb}</li>
+          ` : ""}
+          <li>
+            Сайт:
+            <a class="modal_movie-site" href="${respData.webUrl}"
+              >${respData.webUrl}</a
+            >
+          </li>
+          ${respData.description !== null ? `
+          <li class="modal_movie-overview">
+            Описание - ${respData.description}
+          </li>
+          ` : ""}
+        </ul>
+      </div>
+      <div class="modal_movie-poster">
+        <img class="modal_movie-backdrop" src="${respData.posterUrl}" alt="" />
+      </div>
+    </div>
 `;
 
 	/* Навешиваем обработчик событий при клике на кнопку "Закрыть" */

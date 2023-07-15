@@ -46,7 +46,7 @@ body {
 	text-decoration-color: #f50;
 	color: #ffffff;
 	letter-spacing: 0.5px;
-	/* animation: breath 2s ease-in-out infinite; */
+	animation: breath 2s ease-in-out infinite;
 }
 
 @keyframes breath {
@@ -171,18 +171,9 @@ body {
 }
 
 /* Модальное окно */
-@keyframes fade-in {
-	from {
-		opacity: 0;
-	}
-
-	to {
-		opacity: 1;
-	}
-}
-
 .modal {
 	display: none;
+	align-items: flex-start;
 	position: fixed;
 	z-index: 100;
 	left: 0;
@@ -195,9 +186,18 @@ body {
 	animation: fade-in 0.4s;
 }
 
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
 .modal-show {
 	display: flex;
-
 	justify-content: center;
 	align-items: center;
 	opacity: 1;
@@ -205,7 +205,7 @@ body {
 
 .modal_card {
 	display: flex;
-	align-items: stretch;
+	justify-content: center;
 	position: relative;
 	background-color: #1a191f;
 	max-width: 800px;
@@ -215,13 +215,19 @@ body {
 	color: #ffffff;
 }
 
+.modal_movie-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .modal_movie-backdrop {
 	width: 100%;
 	border-radius: 15px;
 }
 
 .modal_movie-info {
-	padding: 20px 0;
+	padding: 20px 0px;
 }
 
 .modal_movie-info ul {
@@ -235,33 +241,50 @@ body {
 	margin-left: 20px;
 }
 
+@media (max-width: 600px) {
+	.modal_card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-height: 844px;
+	}
+
+	.modal_movie-poster {
+		display: flex;
+		order: -1;
+		width: 100%;
+		max-width: 300px;
+	}
+}
+
 .modal_movie-poster {
 	flex: 0 0 300px;
-	margin-right: 0;
-	margin-bottom: 20px;
+	padding: 15px;
 }
 
 .modal_button-close {
-	align-self: flex-start;
-	padding: 10px 20px;
-	margin: 15px 0;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	padding: 5px;
+	font-size: 24px;
 	cursor: pointer;
-	border: none;
-	border-radius: 15px;
-	background-color: #ff5500;
-	color: #ffffff;
-	font-size: 16px;
-	font-family: "Alumni Sans", sans-serif;
-	letter-spacing: 0.5px;
+	text-decoration: none;
+	color: #ff550081;
 }
 
 .modal_button-close:hover {
-	background: linear-gradient(135deg, #ff55009f 69.93%, #d6bb00);
-	cursor: pointer;
+	color: #f50;
 }
 
 .modal_movie-site {
-	color: #ffd80e;
+	color: #ff550081;
+	transition: transform 0.3s;
+}
+
+.modal_movie-site:hover {
+	color: #f50;
+	transform: scale(1.1);
 }
 
 .stop-scrolling {
@@ -271,6 +294,7 @@ body {
 
 .modal_movie-title {
 	font-size: 32px;
+	padding: 24px;
 }
 
 .modal_movie-release-year {
