@@ -3,20 +3,20 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
 
-	::-webkit-scrollbar {
-		width: 8px;
-	}
+::-webkit-scrollbar {
+	width: 8px;
+}
 
-	::-webkit-scrollbar-thumb {
-		background-color: #f50;
-		border-radius: 16px;
-	}
+::-webkit-scrollbar-thumb {
+	background-color: #f50;
+	border-radius: 16px;
+}
 
-	::-webkit-scrollbar-track {
-		-webkit-box-shadow: inset 0 0 6px #1a191f;
-		background-color: #1a191f;
-	}
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px #1a191f;
+	background-color: #1a191f;
 }
 
 /* Основные стили */
@@ -30,7 +30,6 @@ body {
 	max-width: 1200px;
 	margin: 0 auto;
 }
-
 
 /* Шапка */
 .header_content {
@@ -77,9 +76,7 @@ body {
 
 .header_search:hover {
 	transform: scale(1.1);
-	background-color: #ffffff;
 }
-
 
 /* Карточки фильмов */
 .movies {
@@ -135,7 +132,7 @@ body {
 
 .movie_title {
 	font-size: 20px;
-	color: rgb(255, 255, 255);
+	color: #ffffff;
 }
 
 .movie_category {
@@ -215,6 +212,20 @@ body {
 	color: #ffffff;
 }
 
+.modal_button-close {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	padding: 5px;
+	font-size: 24px;
+	cursor: pointer;
+	color: #f50;
+}
+
+.modal_button-close:hover {
+	color: #ff550081;
+}
+
 .modal_movie-content {
 	display: flex;
 	flex-direction: column;
@@ -262,28 +273,13 @@ body {
 	padding: 15px;
 }
 
-.modal_button-close {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	padding: 5px;
-	font-size: 24px;
-	cursor: pointer;
-	text-decoration: none;
-	color: #ff550081;
-}
-
-.modal_button-close:hover {
-	color: #f50;
-}
-
 .modal_movie-site {
-	color: #ff550081;
+	color: #f50;
 	transition: transform 0.3s;
 }
 
 .modal_movie-site:hover {
-	color: #f50;
+	color: #ff550081;
 	transform: scale(1.1);
 }
 
@@ -299,4 +295,26 @@ body {
 
 .modal_movie-release-year {
 	font-size: 24px;
+}
+
+/* Кнопка подгрузки контента */
+.load-more-btn {
+	/* display: none !important; */
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
+	padding: 8px;
+	border: 2px solid #f50;
+	border-radius: 15px;
+	font-size: 16px;
+	font-family: "Alumni Sans", sans-serif;
+	letter-spacing: 0.5px;
+	color: #ffffff;
+	transition: transform 0.3s;
+	background-color: #1a191f;
+	margin: 20px auto;
+}
+
+.load-more-btn:hover {
+	transform: scale(1.1);
 }
