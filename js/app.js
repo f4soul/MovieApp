@@ -3,7 +3,7 @@ const API_KEY = "f46a3ff7-645d-422b-938c-4ab850430aa8";
 
 /* Запрос к API и получение фильмов из подборки */
 let currentPage = 1;
-const moviesPerPage = 20;
+const moviesPerPage = 35;
 const API_URL_POPULAR =
 	"https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=";
 
@@ -80,12 +80,9 @@ function showMovies(data) {
 		}
 	});
 	/* Показываем кнопку "Загрузить еще", если есть еще страницы с фильмами и убираем кнопку на странице с поисковым запросом */
-	if (currentPage <= data.pagesCount) {
+	if (data.pagesCount != 0) {
 		const loadMoreBtn = document.querySelector(".load-more-btn");
 		loadMoreBtn.style.display = "block";
-	} else {
-		const loadMoreBtn = document.querySelector(".load-more-btn");
-		loadMoreBtn.style.display = "none";
 	}
 }
 
@@ -113,13 +110,13 @@ form.addEventListener("submit", (e) => {
 	if (search.value) {
 		getMovies(apiSearchUrl);
 		search.value = "";
+		loadMoreBtn.style.display = "none" //Убираем кнопку "Загрузить еще" на странице поискового запроса
 	}
 });
 
-/* Создаем модальное окно и функцию, которая будет его "отлавливать" */
+/* Создаем модальное окно и наполняем его информацией */
 const modalElem = document.querySelector(".modal");
 
-/* Наполняем модальное окно информацией */
 async function openModal(id) {
 	const resp = await fetch(API_URL_MOVIE_DETAILS + id, {
 		headers: {

@@ -299,7 +299,7 @@ body {
 
 /* Кнопка подгрузки контента */
 .load-more-btn {
-	/* display: none !important; */
+	display: block;
 	cursor: pointer;
 	justify-content: center;
 	align-items: center;
