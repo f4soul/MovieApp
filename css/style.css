@@ -41,25 +41,15 @@ body {
 }
 
 .header_logo {
-	font-size: 54px;
+	font-size: 40px;
 	text-decoration-color: #f50;
 	color: #ffffff;
 	letter-spacing: 0.5px;
-	animation: breath 2s ease-in-out infinite;
+	transition: transform 0.3s;
 }
 
-@keyframes breath {
-	0% {
-		transform: scale(1);
-	}
-
-	50% {
-		transform: scale(1.05);
-	}
-
-	100% {
-		transform: scale(1);
-	}
+.header_logo:hover {
+	transform: scale(1.1);
 }
 
 .header_search {
