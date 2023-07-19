@@ -138,8 +138,10 @@ async function openModal(id) {
 					<div class="modal_movie-content">
 						<h2>
 							<span class="modal_movie-title">${respData.nameRu}</span>
-							<span class="modal_movie-release-year"> - ${respData.year}</span>
 						</h2>
+						<h3>
+						<span class="modal_movie-release-year">${respData.year}</span>
+						</h3>
 						<ul class="modal_movie-info">
 							<li class="modal_movie-genre">
 								Жанр - ${respData.genres.map((el) => `<span>${el.genre}</span>`)}
