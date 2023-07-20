@@ -1,0 +1,90 @@
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #f50;
+	border-radius: 16px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px #1a191f;
+	background-color: #1a191f;
+}
+
+/* Основные стили */
+body {
+	background-color: #1a191f;
+	font-family: "Alumni Sans", sans-serif;
+	letter-spacing: 0.5px;
+	margin: 0;
+}
+
+/* Шапка */
+.header_content {
+	display: flex;
+	padding: 16px;
+	justify-content: center;
+	height: 60px;
+}
+
+.header_logo {
+	font-size: 40px;
+	text-decoration-color: #f50;
+	color: #ffffff;
+	letter-spacing: 0.5px;
+	transition: transform 0.3s;
+}
+
+.header_logo:hover {
+	transform: scale(1.1);
+}
+
+/* Блок с информацией */
+.about_card {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	background-color: #1a191f;
+	background-image: url(/img/kpback.jpg);
+	background-size: cover;
+	max-width: 1200px;
+	padding: 10px;
+	margin: 25px auto;
+	border-radius: 15px;
+	box-shadow: 0 0 20px 0 #af94947c;
+	color: #ffffff;
+	font-size: 14pt;
+}
+
+.about-content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.about-info {
+	text-align: justify;
+	padding: 15px;
+	letter-spacing: 0.5px;
+}
+
+.info {
+	border-radius: 15px;
+	box-shadow: 0 0 20px 0 #af94947c;
+	background-color: #1a191f;
+	padding: 0 10px 0 10px;
+}
+
+.about-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

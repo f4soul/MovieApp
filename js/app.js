@@ -1,6 +1,6 @@
 /* Подключение к API */
 /* Резервный ключ "c00a42bb-f3ca-4225-a80e-eb89e511037e" */ /* f46a3ff7-645d-422b-938c-4ab850430aa8 */
-const API_KEY = "c00a42bb-f3ca-4225-a80e-eb89e511037e";
+const API_KEY = "f46a3ff7-645d-422b-938c-4ab850430aa8";
 
 /* URL для получения фильмов из подборки */
 const API_URL_POPULAR = "https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=";
@@ -108,6 +108,7 @@ form.addEventListener("submit", (e) => {
 	const apiSearchUrl = `${API_URL_SEARCH}${search.value}`;
 	if (search.value) {
 		isSearchQuery = true; // Устанавливаем переменную isSearchQuery в true, когда выполняется поисковый запрос, чтобы убрать кнопку "Загрузить еще"
+		history.pushState(null, null, "/search");
 		getMovies(apiSearchUrl);
 		search.value = "";
 	}

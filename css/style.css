@@ -32,15 +32,18 @@ body {
 }
 
 /* Шапка */
-.header_content {
+.header_container {
 	display: flex;
-	padding: 16px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 15px;
 	align-items: center;
 	justify-content: space-between;
 	height: 60px;
 }
 
 .header_logo {
+	display: flex;
 	font-size: 40px;
 	text-decoration-color: #f50;
 	color: #ffffff;
@@ -49,6 +52,21 @@ body {
 }
 
 .header_logo:hover {
+	transform: scale(1.1);
+}
+
+.header_info {
+	display: flex;
+	align-items: center;
+
+}
+
+.header_about {
+	padding: 15px;
+	transition: transform 0.3s;
+}
+
+.header_about:hover {
 	transform: scale(1.1);
 }
 
@@ -62,6 +80,8 @@ body {
 	letter-spacing: 0.5px;
 	transition: transform 0.3s;
 	background-color: #ffffff;
+	align-items: flex-end;
+	justify-content: end;
 }
 
 .header_search:hover {
