@@ -189,7 +189,6 @@ body {
 	height: 100%;
 	overflow: auto;
 	background-color: #00000080;
-	overflow: hidden;
 	animation: fade-in 0.4s;
 }
 
@@ -208,6 +207,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	opacity: 1;
+	overflow: hidden;
 }
 
 .modal_card {
@@ -262,22 +262,6 @@ body {
 	margin-left: 20px;
 }
 
-@media (max-width: 600px) {
-	.modal_card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		max-height: 844px;
-	}
-
-	.modal_movie-poster {
-		display: flex;
-		order: -1;
-		width: 100%;
-		max-width: 300px;
-	}
-}
-
 .modal_movie-poster {
 	flex: 0 0 300px;
 	padding: 15px;
@@ -327,4 +311,57 @@ body {
 
 .load-more-btn:hover {
 	transform: scale(1.1);
+}
+
+/* Медиа-запросы */
+@media (max-width: 600px) {
+	.modal_button-close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		padding: 5px;
+		font-size: 20px;
+		cursor: pointer;
+		color: #f50;
+	}
+
+	.modal_movie-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: -20px;
+	}
+
+	.modal_movie-title {
+		display: contents;
+		font-size: 20px;
+	}
+
+	.modal_movie-release-year {
+		font-size: 20px;
+	}
+
+	.modal_movie-info {
+		font-size: 10pt;
+		justify-content: center;
+		padding: 5px;
+	}
+
+	.stop-scrolling {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.modal_card {
+		flex-direction: column;
+		align-items: center;
+		max-height: 80%;
+		max-width: 90%;
+	}
+
+	.modal_movie-poster {
+		order: -1;
+		width: 100%;
+		max-width: 180px;
+	}
 }

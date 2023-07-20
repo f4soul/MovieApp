@@ -1,9 +1,4 @@
-*,
-::before,
-::after {
-	box-sizing: border-box;
-}
-
+/* Скролл-бар */
 ::-webkit-scrollbar {
 	width: 8px;
 }

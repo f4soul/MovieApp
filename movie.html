@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="movie_cover-inner">
+      <img
+        src="${movie.posterUrlPreview}"
+        alt="${movie.nameRu}"
+        class="movie_cover"
+      />
+      <div class="movie_cover-hover"></div>
+    </div>
+    <div class="movie_info">
+      <div class="movie_title">${movie.nameRu}</div>
+      <div class="movie_category">
+        ${movie.genres.map((genre) => ` ${genre.genre}`)}
+      </div>
+      ${!isPercentage(movie.rating) && movie.rating !== null ? `
+      <div class="movie_average movie_average-${getClassByRate(movie.rating)}">
+        ${movie.rating}
+      </div>
+      ` : ""}
+    </div>
+  </body>
+</html>
