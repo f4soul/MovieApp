@@ -243,7 +243,7 @@ body {
 }
 
 .modal_movie-poster {
-	flex: 0 0 300px;
+	flex: 0 0 350px;
 	padding-left: 20px;
 }
 
@@ -263,11 +263,15 @@ body {
 }
 
 .modal_movie-title {
-	font-size: 32px;
+	font-size: 28px;
+	justify-content: center;
+	align-items: center;
 }
 
 .modal_movie-release-year {
 	font-size: 24px;
+	justify-content: center;
+	align-items: center;
 }
 
 /* Кнопка подгрузки контента */
