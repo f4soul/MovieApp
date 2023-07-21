@@ -294,10 +294,19 @@ body {
 
 /* Медиа-запросы */
 @media (max-width: 770px) {
+
+	body.stop-scrolling {
+		position: fixed;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+	}
+
 	.modal_card {
 		flex-direction: column;
 		max-height: 90%;
 		max-width: 90%;
+		overflow-x: hidden;
 	}
 
 	.modal_movie-content {
