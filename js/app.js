@@ -1,5 +1,5 @@
 /* Подключение к API */
-/* Резервный ключ "c00a42bb-f3ca-4225-a80e-eb89e511037e" */ 
+/* Резервный ключ "c00a42bb-f3ca-4225-a80e-eb89e511037e" */
 const API_KEY = "f46a3ff7-645d-422b-938c-4ab850430aa8";
 
 /* URL для получения фильмов из подборки */
@@ -118,6 +118,7 @@ form.addEventListener("submit", (e) => {
 const modalElem = document.querySelector(".modal");
 
 async function openModal(id) {
+	document.body.classList.add("modal-open"); // Добавляем класс для блокировки скролла
 	const resp = await fetch(API_URL_MOVIE_DETAILS + id, {
 		headers: {
 			"Content-Type": "application/json",
@@ -127,6 +128,7 @@ async function openModal(id) {
 
 	const respData = await resp.json();
 	modalElem.classList.add("modal-show");
+
 
 	/* Убираем возможность скролла страницы при открытом модальном окне */
 	document.body.classList.add("stop-scrolling");
@@ -141,20 +143,20 @@ async function openModal(id) {
 							<span class="modal_movie-title">${respData.nameRu}</span>
 						</h2>
 						<h3>
-						<span class="modal_movie-release-year">${respData.year}</span>
+						<span class="modal_movie-release-year">(${respData.year})</span>
 						</h3>
 						<ul class="modal_movie-info">
 							<li class="modal_movie-genre">
-								Жанр - ${respData.genres.map((el) => `<span>${el.genre}</span>`)}
+								Жанр: ${respData.genres.map((el) => `<span> ${el.genre}</span>`)}
 							</li>
-							${respData.filmLength ? `<li class="modal_movie-runtime">Время - ${respData.filmLength} минут</li>` : ""}
+							${respData.filmLength ? `<li class="modal_movie-runtime">Время: ${respData.filmLength} минут</li>` : ""}
 							${respData.ratingKinopoisk !== null ? `<li>КиноПоиск: ${respData.ratingKinopoisk}</li>` : ""}
 							${respData.ratingImdb !== null ? `<li>IMDb: ${respData.ratingImdb}</li>` : ""}
 							<li>
 								Сайт:
 								<a class="modal_movie-site" href="${respData.webUrl}">${respData.webUrl}</a>
 							</li>
-							${respData.description !== null ? `<li class="modal_movie-overview">Описание - ${respData.description}</li>` : ""}
+							${respData.description !== null ? `<li class="modal_movie-overview">Описание: ${respData.description}</li>` : ""}
 						</ul>
 					</div>
 					<div class="modal_movie-poster">
@@ -169,6 +171,7 @@ async function openModal(id) {
 
 /* Создаем функцию для закрытия модального окна по кнопке "Закрыть" */
 function closeModal() {
+	document.body.classList.remove("modal-open"); // Удаляем класс для разблокировки скролла
 	modalElem.classList.remove("modal-show");
 	document.body.classList.remove("stop-scrolling");
 }
@@ -176,6 +179,7 @@ function closeModal() {
 /* Глобальный обработчик для всей страницы, для закрытия модального окна по клику в любой области */
 window.addEventListener("click", (e) => {
 	if (e.target === modalElem) {
+		e.preventDefault(); // Предотвращаем переход в начало страницы
 		closeModal();
 	}
 });
