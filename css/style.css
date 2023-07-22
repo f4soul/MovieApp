@@ -252,7 +252,6 @@ body {
 
 .modal_movie-poster {
 	flex: 0 0 320px;
-	max-height: 315px;
 	padding-left: 20px;
 }
 
