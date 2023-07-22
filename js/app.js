@@ -42,7 +42,6 @@ function getClassByRate(vote) {
 /* Создаем функцию для отрисовки карточек фильмов на странице */
 function showMovies(data) {
 	const moviesElem = document.querySelector(".movies");
-
 	/* Удаление текущих карточек на странице после отправки запроса через форму поиска */
 	moviesElem.innerHTML = "";
 
@@ -58,20 +57,24 @@ function showMovies(data) {
 			movieElem.classList.add("movie");
 			movieElem.innerHTML = `
               <div class="movie_cover-inner">
-                <img
-                  src="${movie.posterUrlPreview}"
-                  alt="${movie.nameRu}"
-                  class="movie_cover"
-                />
-                <div class="movie_cover-hover"></div>
-              </div>
-              <div class="movie_info">
-                <div class="movie_title">${movie.nameRu}</div>
-                <div class="movie_category">${movie.genres.map((genre) => ` ${genre.genre}`)}</div>
-                ${!isPercentage(movie.rating) && movie.rating !== null
-					? `<div class="movie_average movie_average-${getClassByRate(movie.rating)}">${movie.rating}</div>`
-					: ""}
-              </div>`;
+      <img
+        src="${movie.posterUrlPreview}"
+        alt="${movie.nameRu}"
+        class="movie_cover"
+      />
+      <div class="movie_cover-hover"></div>
+    </div>
+    <div class="movie_info">
+      <div class="movie_title">${movie.nameRu}</div>
+			<div class="movie-year-status">(${movie.year})</div>
+      <div class="movie_category">
+        ${movie.genres.map((genre) => ` ${genre.genre}`)}
+      </div>
+      ${!isPercentage(movie.rating) && movie.rating !== null ? `
+      <div class="movie_average movie_average-${getClassByRate(movie.rating)}">
+        ${movie.rating}
+      </div>
+      ` : ""}`;
 			movieElem.addEventListener("click", () => openModal(movie.filmId));
 			moviesElem.appendChild(movieElem);
 		}
@@ -139,7 +142,7 @@ async function openModal(id) {
 						<i class="fa-regular fa-circle-xmark"></i>
 					</div>
 					<div class="modal_movie-content">
-						<h2>
+						<h2 class="selected">
 							<span class="modal_movie-title">${respData.nameRu}</span>
 						</h2>
 						<h3>
@@ -156,7 +159,7 @@ async function openModal(id) {
 								Сайт:
 								<a class="modal_movie-site" href="${respData.webUrl}">${respData.webUrl}</a>
 							</li>
-							${respData.description !== null ? `<li class="modal_movie-overview">Описание: ${respData.description}</li>` : ""}
+							${respData.description !== null ? `<li class="modal_movie-overview">Описание: <br>${respData.description}</li>` : ""}
 						</ul>
 					</div>
 					<div class="modal_movie-poster">

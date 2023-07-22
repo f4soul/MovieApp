@@ -124,17 +124,25 @@ body {
 }
 
 .movie_info {
-	padding: 10px 0px;
+	padding: 5px 0px;
 }
 
 .movie_title {
 	font-size: 20px;
 	color: #ffffff;
+	text-align: center;
+}
+
+.movie-year-status {
+	font-size: 16px;
+	color: #ffffff;
+	text-align: center;
 }
 
 .movie_category {
 	font-size: 16px;
 	color: gold;
+	text-align: center;
 }
 
 .movie_average {
@@ -239,11 +247,12 @@ body {
 
 .modal_movie-info li {
 	padding: 5px 0;
-	margin-left: 20px;
+	margin-left: auto;
 }
 
 .modal_movie-poster {
-	flex: 0 0 350px;
+	flex: 0 0 320px;
+	max-height: 315px;
 	padding-left: 20px;
 }
 
@@ -266,6 +275,10 @@ body {
 	font-size: 28px;
 	justify-content: center;
 	align-items: center;
+}
+
+.selected {
+	text-align: center;
 }
 
 .modal_movie-release-year {
@@ -300,7 +313,6 @@ body {
 @media (max-width: 770px) {
 
 	body.stop-scrolling {
-		position: fixed;
 		overflow: hidden;
 		width: 100%;
 		height: 100%;
@@ -311,11 +323,17 @@ body {
 		max-height: 90%;
 		max-width: 90%;
 		overflow-x: hidden;
+		padding: 25px;
 	}
 
 	.modal_movie-content {
 		display: flex;
 		flex-direction: column;
+	}
+
+	.modal_movie-backdrop {
+		margin: 0;
+		max-height: 315px;
 	}
 
 	.modal_movie-title {
@@ -324,18 +342,19 @@ body {
 	}
 
 	.modal_movie-release-year {
-		font-size: 1.2rem;
+		font-size: 1rem;
 	}
 
 	.modal_movie-info {
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 		justify-content: center;
 	}
 
 	.modal_movie-poster {
 		order: -1;
 		max-width: 220px;
-		padding-left: 0;
+		max-height: 315px;
+		padding: 0;
 	}
 
 	.modal_button-close {
