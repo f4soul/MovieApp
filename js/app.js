@@ -56,7 +56,7 @@ function showMovies(data) {
 			const movieElem = document.createElement("div");
 			movieElem.classList.add("movie");
 			movieElem.innerHTML = `
-              <div class="movie_cover-inner">
+    <div class="movie_cover-inner">
       <img
         src="${movie.posterUrlPreview}"
         alt="${movie.nameRu}"
@@ -66,7 +66,7 @@ function showMovies(data) {
     </div>
     <div class="movie_info">
       <div class="movie_title">${movie.nameRu}</div>
-			<div class="movie-year-status">(${movie.year})</div>
+      <div class="movie-year-status">(${movie.year})</div>
       <div class="movie_category">
         ${movie.genres.map((genre) => ` ${genre.genre}`)}
       </div>
@@ -74,7 +74,8 @@ function showMovies(data) {
       <div class="movie_average movie_average-${getClassByRate(movie.rating)}">
         ${movie.rating}
       </div>
-      ` : ""}`;
+      ` : ""}
+    </div>`;
 			movieElem.addEventListener("click", () => openModal(movie.filmId));
 			moviesElem.appendChild(movieElem);
 		}
