@@ -25,7 +25,6 @@ async function getMovies(url) {
 	});
 	const respData = await resp.json();
 	showMovies(respData);
-	currentPage++;
 }
 
 /* Создаем функцию для окрашивания рамки поля с оценкой фильма согласно полученному значению */
@@ -43,7 +42,7 @@ function getClassByRate(vote) {
 function showMovies(data) {
 	const moviesElem = document.querySelector(".movies");
 	/* Удаление текущих карточек на странице после отправки запроса через форму поиска */
-	moviesElem.innerHTML = "";
+	// moviesElem.innerHTML = "";
 
 	/* Создаем карточки фильмов на странице */
 	data.films.forEach((movie) => {
@@ -56,26 +55,26 @@ function showMovies(data) {
 			const movieElem = document.createElement("div");
 			movieElem.classList.add("movie");
 			movieElem.innerHTML = `
-    <div class="movie_cover-inner">
-      <img
-        src="${movie.posterUrlPreview}"
-        alt="${movie.nameRu}"
-        class="movie_cover"
-      />
-      <div class="movie_cover-hover"></div>
-    </div>
-    <div class="movie_info">
-      <div class="movie_title">${movie.nameRu}</div>
-      <div class="movie-year-status">(${movie.year})</div>
-      <div class="movie_category">
-        ${movie.genres.map((genre) => ` ${genre.genre}`)}
-      </div>
-      ${!isPercentage(movie.rating) && movie.rating !== null ? `
-      <div class="movie_average movie_average-${getClassByRate(movie.rating)}">
-        ${movie.rating}
-      </div>
-      ` : ""}
-    </div>`;
+                <div class="movie_cover-inner">
+                    <img
+                        src="${movie.posterUrlPreview}"
+                        alt="${movie.nameRu}"
+                        class="movie_cover"
+                    />
+                    <div class="movie_cover-hover"></div>
+                </div>
+                <div class="movie_info">
+                    <div class="movie_title">${movie.nameRu}</div>
+                    <div class="movie-year-status">(${movie.year})</div>
+                    <div class="movie_category">
+                        ${movie.genres.map((genre) => ` ${genre.genre}`)}
+                    </div>
+                    ${!isPercentage(movie.rating) && movie.rating !== null ? `
+                    <div class="movie_average movie_average-${getClassByRate(movie.rating)}">
+                        ${movie.rating}
+                    </div>
+                    ` : ""}
+                </div>`;
 			movieElem.addEventListener("click", () => openModal(movie.filmId));
 			moviesElem.appendChild(movieElem);
 		}
@@ -92,8 +91,20 @@ function showMovies(data) {
 /* Обработчик события при клике на кнопку "Загрузить еще" */
 const loadMoreBtn = document.querySelector(".load-more-btn");
 loadMoreBtn.addEventListener("click", () => {
+	currentPage++;
 	getMovies(`${API_URL_POPULAR}${currentPage}`);
+	showMovies(respData);
 });
+
+/* const limitMovies = document.querySelectorAll(".movie").length;
+function countMov() {
+	if (limitMovies <= 100) {
+		loadMoreBtn.style.display = "block";
+	} else {
+		loadMoreBtn.style.display = "none";
+	}
+}
+countMov(); */
 
 /* Функция для проверки входного значения поля "рейтинг" (если возвращается пустое значение, либо значение с %, то рейтинг не выводится в карточку) */
 function isPercentage(value) {
