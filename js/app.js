@@ -41,11 +41,10 @@ function getClassByRate(vote) {
 /* Создаем функцию для отрисовки карточек фильмов на странице */
 function showMovies(data) {
 	const moviesElem = document.querySelector(".movies");
-	/* Удаление текущих карточек на странице после отправки запроса через форму поиска */
-	// moviesElem.innerHTML = "";
 
 	/* Создаем карточки фильмов на странице */
 	data.films.forEach((movie) => {
+
 		/* Проверяем условия для рейтинга и названия фильма и убираем из поисковой выдачи фильмы, где отсутствует рейтинг или название фильма */
 		if (
 			movie.rating !== null &&
@@ -77,6 +76,7 @@ function showMovies(data) {
                 </div>`;
 			movieElem.addEventListener("click", () => openModal(movie.filmId));
 			moviesElem.appendChild(movieElem);
+			data.pagesCount = 5;
 		}
 	});
 	/* Показываем кнопку "Загрузить еще", если есть еще страницы с фильмами и убираем кнопку на странице с поисковым запросом */
@@ -93,18 +93,39 @@ const loadMoreBtn = document.querySelector(".load-more-btn");
 loadMoreBtn.addEventListener("click", () => {
 	currentPage++;
 	getMovies(`${API_URL_POPULAR}${currentPage}`);
-	showMovies(respData);
 });
 
-/* const limitMovies = document.querySelectorAll(".movie").length;
-function countMov() {
-	if (limitMovies <= 100) {
-		loadMoreBtn.style.display = "block";
-	} else {
-		loadMoreBtn.style.display = "none";
+/* Обработчик события при клике на кнопку "Наверх" */
+const btnUp = {
+	el: document.querySelector('.btn-up'),
+	show() {
+		// удалим у кнопки класс btn-up_hide
+		this.el.classList.remove('btn-up_hide');
+	},
+	hide() {
+		// добавляем к кнопке класс btn-up_hide
+		this.el.classList.add('btn-up_hide');
+	},
+	addEventListener() {
+		// при прокрутке содержимого страницы
+		window.addEventListener('scroll', () => {
+			// определяем величину прокрутки
+			const scrollY = window.scrollY || document.documentElement.scrollTop;
+			// если страница прокручена больше чем на 400px, то делаем кнопку видимой, иначе скрываем
+			scrollY > 400 ? this.show() : this.hide();
+		});
+		// при нажатии на кнопку .btn-up
+		document.querySelector('.btn-up').onclick = () => {
+			// перемещаем в начало страницы
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: 'smooth'
+			});
+		}
 	}
 }
-countMov(); */
+btnUp.addEventListener();
 
 /* Функция для проверки входного значения поля "рейтинг" (если возвращается пустое значение, либо значение с %, то рейтинг не выводится в карточку) */
 function isPercentage(value) {
@@ -121,6 +142,10 @@ form.addEventListener("submit", (e) => {
 
 	/* Формирование поискового запроса и очистка формы после отправки запроса */
 	const apiSearchUrl = `${API_URL_SEARCH}${search.value}`;
+	const moviesElem = document.querySelector(".movies");
+
+	/* Удаление текущих карточек на странице после отправки запроса через форму поиска */
+	moviesElem.innerHTML = "";
 	if (search.value) {
 		isSearchQuery = true; // Устанавливаем переменную isSearchQuery в true, когда выполняется поисковый запрос, чтобы убрать кнопку "Загрузить еще"
 		history.pushState(null, null, "/search");
@@ -144,10 +169,8 @@ async function openModal(id) {
 	const respData = await resp.json();
 	modalElem.classList.add("modal-show");
 
-
 	/* Убираем возможность скролла страницы при открытом модальном окне */
 	document.body.classList.add("stop-scrolling");
-
 	modalElem.innerHTML = `
 				<div class="modal_card">
 					<div class="modal_button-close">
