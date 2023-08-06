@@ -174,7 +174,7 @@ async function openModal(id) {
 	modalElem.innerHTML = `
 				<div class="modal_card">
 					<div class="modal_button-close">
-						<i class="fa-regular fa-circle-xmark"></i>
+						<i class="fa-regular fa-circle-xmark fa-xl"></i>
 					</div>
 					<div class="modal_movie-content">
 						<h2 class="selected">
@@ -191,8 +191,7 @@ async function openModal(id) {
 							${respData.ratingKinopoisk !== null ? `<li>КиноПоиск: ${respData.ratingKinopoisk}</li>` : ""}
 							${respData.ratingImdb !== null ? `<li>IMDb: ${respData.ratingImdb}</li>` : ""}
 							<li>
-								Сайт:
-								<a class="modal_movie-site" href="${respData.webUrl}">${respData.webUrl}</a>
+								<a class="modal_movie-site" href="${respData.webUrl}">Страница фильма</a>
 							</li>
 							${respData.description !== null ? `<li class="modal_movie-overview">Описание: <br>${respData.description}</li>` : ""}
 						</ul>
