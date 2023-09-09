@@ -3,7 +3,11 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
 
+ul,
+ul li {
+	list-style: none;
 }
 
 ::-webkit-scrollbar {
@@ -32,11 +36,10 @@ body {
 	max-width: 1200px;
 	margin: 0 auto;
 	font-family: 'Open Sans', sans-serif;
-
 }
 
 /* Шапка */
-.header_container {
+.header {
 	display: flex;
 	max-width: 1200px;
 	margin: 0 auto;
@@ -52,11 +55,11 @@ body {
 	font-size: 40px;
 	text-decoration-color: #f50;
 	color: #ffffff;
-	transition: transform 0.3s;
-}
+	transition: all 0.3s;
 
-.header_logo:hover {
-	transform: scale(1.1);
+	&:hover {
+		opacity: 0.8
+	}
 }
 
 .header_info {
@@ -66,11 +69,11 @@ body {
 
 .header_about {
 	padding: 15px;
-	transition: transform 0.3s;
-}
+	transition: all .3s;
 
-.header_about:hover {
-	transform: scale(1.1);
+	&:hover {
+		opacity: 0.8
+	}
 }
 
 .header_search {
@@ -81,14 +84,14 @@ body {
 	font-size: 16px;
 	font-family: "Alumni Sans", sans-serif;
 	letter-spacing: 0.5px;
-	transition: transform 0.3s;
+	transition: all 0.3s;
 	background-color: #ffffff;
 	align-items: flex-end;
 	justify-content: end;
-}
 
-.header_search:hover {
-	transform: scale(1.1);
+	&:hover {
+		opacity: 0.8
+	}
 }
 
 /* Карточки фильмов */
@@ -196,7 +199,6 @@ body {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto;
 	background-color: #00000080;
 	animation: fade-in 0.4s;
 }
@@ -221,22 +223,22 @@ body {
 .modal_card {
 	display: flex;
 	align-items: center;
-	position: absolute;
+	flex-direction: column;
+	position: relative;
 	background-color: #1a191f;
 	max-width: 800px;
-	padding: 37px;
+	padding: 35px;
 	border-radius: 15px;
 	box-shadow: 0 0 20px 0 #af94947c;
 	color: #ffffff;
-	overflow: auto;
 }
 
 .modal_button-close {
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	padding: 5px;
-	font-size: 18px;
+	position: relative;
+	display: flex;
+	top: -10px;
+	align-self: end;
+	right: -20px;
 	cursor: pointer;
 	color: #f50;
 }
@@ -251,6 +253,12 @@ body {
 	align-items: center;
 }
 
+.modal__content--wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .modal_movie-backdrop {
 	width: 100%;
 	border-radius: 15px;
@@ -261,7 +269,7 @@ body {
 }
 
 .modal_movie-info li {
-	padding: 5px 0;
+	padding: 5px 15px 0 0;
 	margin-left: auto;
 }
 
@@ -291,10 +299,6 @@ body {
 	align-items: center;
 }
 
-.selected {
-	text-align: center;
-}
-
 .modal_movie-release-year {
 	font-size: 24px;
 	justify-content: center;
@@ -308,19 +312,20 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding: 8px;
-	border: 2px solid #f50;
+	border: 2px solid #ff5500ab;
 	border-radius: 15px;
 	font-size: 16px;
 	font-family: "Alumni Sans", sans-serif;
 	letter-spacing: 0.5px;
-	color: #ffffff;
-	transition: transform 0.3s;
+	color: #ffffff79;
+	transition: all 0.3s;
 	background-color: #1a191f;
 	margin: 20px auto;
-}
 
-.load-more-btn:hover {
-	transform: scale(1.1);
+	&:hover {
+		border: 2px solid #f50;
+		color: #fff;
+	}
 }
 
 /* Кнопка "Наверх" */
@@ -355,11 +360,28 @@ body {
 	display: none;
 }
 
-/* Медиа-запросы */
-@media (max-width: 770px) {
+/* Подвал */
+.footer {
+	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 15px;
+	align-items: center;
+	justify-content: space-between;
+	height: 60px;
+	font-family: 'Alumni Sans', sans-serif;
+}
 
+.copyright {
+	font-size: 16px;
+	color: #fff;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
 	::-webkit-scrollbar {
 		display: none;
+		;
 	}
 
 	body.stop-scrolling {
@@ -371,22 +393,9 @@ body {
 		flex-direction: column;
 		max-height: 90%;
 		max-width: 90%;
-		overflow-x: hidden;
-		padding: 50px;
-	}
-
-	.modal_movie-content {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.modal_movie-backdrop {
-		margin: 0;
-		max-height: 315px;
 	}
 
 	.modal_movie-title {
-		display: contents;
 		font-size: 1.2rem;
 	}
 
@@ -396,18 +405,37 @@ body {
 
 	.modal_movie-info {
 		font-size: 0.9rem;
-		justify-content: center;
 	}
 
 	.modal_movie-poster {
-		order: -1;
 		max-width: 220px;
-		max-height: 315px;
 		padding: 0;
 	}
 
 	.modal_button-close {
+		top: -15px;
+		padding: 5px;
+		right: -25px;
+	}
+
+	.load-more-btn {
+		border: 2px solid #f50;
+		color: #fff;
+	}
+}
+
+@media (max-width: 425px) {
+	.modal__content--wrapper {
+		overflow: auto;
+		display: grid;
+	}
+
+	.modal_movie-poster {
+		order: -1;
+		justify-self: center;
+	}
+
+	.modal_button-close {
 		font-size: 20px;
-		color: #f50;
 	}
 }
