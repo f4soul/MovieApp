@@ -14,15 +14,27 @@
 }
 
 /* Основные стили */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
 body {
+	box-sizing: border-box;
 	background-color: #1a191f;
 	font-family: 'Open Sans', sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 /* Шапка */
 .header_content {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	height: 60px;
 }
 
@@ -36,53 +48,59 @@ body {
 	padding: 16px;
 }
 
-.header_logo:hover {
-	transform: scale(1.1);
-}
-
 /* Блок с информацией */
 .about_card {
-	display: flex;
-	position: relative;
 	background-color: #1a191f;
-	background-image: url(/img/kpback.jpg);
-	background-size: auto;
-	max-width: 1200px;
-	padding: 10px;
-	margin: 25px auto;
+	margin: auto;
 	border-radius: 15px;
 	box-shadow: 0 0 20px 0 #af94947c;
 	color: #ffffff;
-	font-size: 1vw;
+	font-size: 13px;
+	max-width: 800px;
 }
 
 .about-info {
-	text-align: justify;
 	padding: 5px;
+	letter-spacing: 0.5px;
 }
 
 .info {
-	border-radius: 15px;
-	box-shadow: 0 0 20px 0 #af94947c;
-	background-color: #1a191f;
-	padding: 10px;
-	margin: 25px;
+	margin: 15px;
 }
 
 .about-title {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: 15px;
 }
 
 h2 {
 	margin: 0;
 	padding: 0;
-	font-size: 1.3vw;
+	font-size: 20px;
+}
+
+p {
+	font-size: 13px;
 }
 
 ul {
-	padding: 20px;
+	padding: 0 20px;
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 60px;
+	font-family: 'Alumni Sans', sans-serif;
+	margin-top: auto;
+}
+
+.copyright {
+	font-size: 16px;
+	color: #fff;
 }
 
 /* Медиа-запросы */
