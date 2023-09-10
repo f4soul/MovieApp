@@ -32,6 +32,8 @@ body {
 
 /* Шапка */
 .header_content {
+	position: sticky;
+	top: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -66,42 +68,40 @@ body {
 
 .info {
 	margin: 15px;
+
+	h2 {
+		font-size: 20px;
+	}
+
+	p {
+		font-size: 13px;
+	}
 }
 
 .about-title {
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	margin-top: 15px;
 }
 
-h2 {
-	margin: 0;
-	padding: 0;
-	font-size: 20px;
-}
-
-p {
-	font-size: 13px;
-}
-
 ul {
-	padding: 0 20px;
+	padding: 0 15px;
 }
 
+/* Подвал */
 .footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 60px;
 	font-family: 'Alumni Sans', sans-serif;
-	margin-top: auto;
+
+	.copyright {
+		font-size: 16px;
+		color: #fff;
+	}
 }
 
-.copyright {
-	font-size: 16px;
-	color: #fff;
-}
 
 /* Медиа-запросы */
 @media (max-width: 770px) {
@@ -112,8 +112,6 @@ ul {
 	}
 
 	h2 {
-		margin: 0;
-		padding: 0;
 		font-size: 1rem;
 	}
 }
