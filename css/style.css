@@ -42,12 +42,16 @@ body {
 .header {
 	display: flex;
 	max-width: 1200px;
-	margin: 0 auto;
 	padding: 15px;
 	align-items: center;
 	justify-content: space-between;
 	height: 60px;
 	font-family: 'Alumni Sans', sans-serif;
+	position: sticky;
+	top: 0;
+	background-color: #1a191f;
+	z-index: 2;
+	overflow: auto;
 }
 
 .header_logo {
