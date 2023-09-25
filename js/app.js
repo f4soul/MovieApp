@@ -157,8 +157,15 @@ form.addEventListener("submit", (e) => {
 /* Создаем модальное окно и наполняем его информацией */
 const modalElem = document.querySelector(".modal");
 
+/* Убираем возможность скролла страницы при открытом модальном окне */
+function disableScroll() {
+	let paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
+	document.body.style.paddingRight = paddingOffset;
+	document.body.classList.add("stop-scrolling");
+}
+
 async function openModal(id) {
-	document.body.classList.add("modal-open"); // Добавляем класс для блокировки скролла
+	document.body.classList.add("modal-open");
 	const resp = await fetch(API_URL_MOVIE_DETAILS + id, {
 		headers: {
 			"Content-Type": "application/json",
@@ -169,8 +176,8 @@ async function openModal(id) {
 	const respData = await resp.json();
 	modalElem.classList.add("modal-show");
 
-	/* Убираем возможность скролла страницы при открытом модальном окне */
-	document.body.classList.add("stop-scrolling");
+	disableScroll();
+
 	modalElem.innerHTML = `
 <div class="modal_card">
   <div class="modal_button-close">
@@ -221,9 +228,10 @@ async function openModal(id) {
 
 /* Создаем функцию для закрытия модального окна по кнопке "Закрыть" */
 function closeModal() {
-	document.body.classList.remove("modal-open"); // Удаляем класс для разблокировки скролла
+	document.body.classList.remove("modal-open");
 	modalElem.classList.remove("modal-show");
 	document.body.classList.remove("stop-scrolling");
+	document.body.style.paddingRight = '0px';
 }
 
 /* Глобальный обработчик для всей страницы, для закрытия модального окна по клику в любой области */
