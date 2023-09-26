@@ -235,7 +235,7 @@ body {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	position: relative;
+	position: fixed;
 	background-color: #1a191f;
 	max-width: 850px;
 	padding: 35px;
@@ -305,10 +305,12 @@ body {
 	overflow: hidden;
 }
 
-.modal_movie-title {
-	font-size: 1.6rem;
-	justify-content: center;
-	align-items: center;
+h2 {
+	text-align: center;
+
+	.modal_movie-title {
+		font-size: 1.7rem;
+	}
 }
 
 .modal_movie-release-year {
@@ -455,16 +457,34 @@ body {
 	.modal__content--wrapper {
 		align-items: flex-start;
 		overflow: auto;
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		grid-gap: 15px;
+		grid-template-areas: "d p";
+	}
+
+	.modal_movie-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		grid-area: d;
+		width: 420px;
+	}
+
+	.modal_movie-info li {
+		padding: 5px 0 0 0;
 	}
 
 	.modal_movie-poster {
 		max-width: 180px;
+		max-height: 259px;
 		top: 0;
 		position: sticky;
+		grid-area: p;
 	}
 
 	.modal_movie-backdrop {
-		max-height: 260px;
+		max-height: 259px;
 		max-width: 180px;
 	}
 }
